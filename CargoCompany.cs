@@ -8,6 +8,7 @@ namespace LR4
 {
     internal class CargoCompany
     {
+        private static CargoCompany ?instance;
         private Tariff currentTariff;
         private string companyName;
         private double mass;
@@ -37,31 +38,14 @@ namespace LR4
             mass = 0;
         }
 
-        private CargoCompany(double price, string companyName, double mass)
+        public static CargoCompany GetInstance()
         {
-            currentTariff = new Tariff(price);
-            this.companyName = companyName;
-            this.mass = mass;
+            return instance ?? new CargoCompany();
         }
 
-        public static CargoCompany GetInstanceCargoCompany()
+        public void changeTariff(double amount)
         {
-            return new CargoCompany();
-        }
-
-        public static CargoCompany GetInstanceCargoCompany(double price, string companyName, double mass)
-        {
-            return new CargoCompany(price, companyName, mass);
-        }
-
-        public void increaseTariff(double amount)
-        {
-            currentTariff.increaseTariff(amount);
-        }
-
-        public void decreaseTariff(double amount)
-        {
-            currentTariff.decreaseTariff(amount);
+            currentTariff.changeTariff(amount);
         }
 
         public double calculateProfit()

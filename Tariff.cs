@@ -26,14 +26,9 @@ namespace LR4
             this.price = price;
         }
 
-        public void increaseTariff(double price) 
+        public void changeTariff(double price) 
         {
             this.price += price;
-        }
-
-        public void decreaseTariff(double price)
-        {
-            this.price -= price;
         }
     }
 }
